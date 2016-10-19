@@ -2,14 +2,15 @@
 import Leaflet from 'mapbox.js'
 import route   from './router.js'
 import load    from './loader.js'
+const ENDPOINT = 'https://raw.githubusercontent.com/KamataRyo/leaflet-lesson-datastore/master/data/data.json'
+const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnRuNHR1b3oifQ.HH5I3qlw_togDES3IDFOug'
 
 /**
  * Main
  */
 (() => {
   // set up AccessToken
-  Leaflet.mapbox.accessToken = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnRuNHR1b3oifQ.HH5I3qlw_togDES3IDFOug'
-
+  Leaflet.mapbox.accessToken = ACCES_STOKEN
   // Load map
   const map = Leaflet.mapbox.map('map', 'mapbox.streets').setView([0, 0], 1)
 
@@ -21,7 +22,7 @@ import load    from './loader.js'
     })
 
     // Load Data
-    load('/data/data.json', (data) => {
+    load(ENDPOINT, (data) => {
       data.forEach(({lat, lng, title, description, imageURL}) => {
         Leaflet
           .marker([lat, lng])

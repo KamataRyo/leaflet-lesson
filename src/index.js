@@ -1,6 +1,7 @@
 'use strict'
 import Leaflet from 'mapbox.js'
 import route   from './router.js'
+import load    from './loader.js'
 
 /**
  * Main
@@ -18,7 +19,20 @@ import route   from './router.js'
       map.panTo(new Leaflet.LatLng(lat, lng))
       map.setZoom(zoom)
     })
-    // Do anything
+
+    // Load Data
+    load('/data/data.json', (data) => {
+      data.forEach(({lat, lng, title, description, imageURL}) => {
+        Leaflet
+          .marker([lat, lng])
+          .addTo(map)
+          .bindPopup(`
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <p><img src="${imageURL}" width="100px"/></p>
+        `)
+      })
+    })
   })
 
   // URL routing at `moveend` and `zoomend`

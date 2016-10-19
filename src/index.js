@@ -17,7 +17,7 @@ const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnR
   map.on('ready', () => {
     // initial routing with given URL
     route({}, ({lat, lng, zoom}) => {
-      map.panTo(new Leaflet.LatLng(lat, lng))
+      map.panTo(new Leaflet.LatLng(lat, lng), true)
       map.setZoom(zoom)
     })
 
@@ -30,8 +30,8 @@ const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnR
           .bindPopup(`
             <h3>${title}</h3>
             <p>${description}</p>
-            <p><img src="${imageURL}" width="100px"/></p>
-        `)
+            <p><img src="${imageURL}" width="200px"/></p>
+          `)
       })
     })
   })

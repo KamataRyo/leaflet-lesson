@@ -11,8 +11,8 @@ export default (args, callback) => {
   // Only work with pushState
   if (!window.history || !window.history.pushState) { return }
 
-  // Parse URL and get queries
-  const queries = url.parse(document.URL, true).query
+  // Parse URL and get query
+  const {query, pathname} = url.parse(document.URL, true)
 
   // Tokyo station
   const defaultLocation = {
@@ -22,12 +22,12 @@ export default (args, callback) => {
   }
 
   // xyz in arguments > xyz in URL > default xyz
-  const lat  = args.lat  || queries.lat  || defaultLocation.lat
-  const lng  = args.lng  || queries.lng  || defaultLocation.lng
-  const zoom = args.zoom || queries.zoom || defaultLocation.zoom
+  const lat  = args.lat  || query.lat  || defaultLocation.lat
+  const lng  = args.lng  || query.lng  || defaultLocation.lng
+  const zoom = args.zoom || query.zoom || defaultLocation.zoom
 
   // Set URL
-  window.history.pushState(null, null, `/?lat=${lat}&lng=${lng}&zoom=${zoom}`)
+  window.history.pushState(null, null, `${pathname}?lat=${lat}&lng=${lng}&zoom=${zoom}`)
 
   // callback
   if (typeof callback == 'function') { callback({lat, lng, zoom}) }

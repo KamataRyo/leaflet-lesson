@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- '4'
+- '5'
+- '6'
+branches:
+  only:
+  - master
+before_script:
+- npm install
+- npm run build
+after_success:
+- rm .gitignore
+- rm .travis.yml
+- curl https://raw.githubusercontent.com/KamataRyo/travis-sctipts-collection/master/deploy-gh-pages.sh | bash
+env:
+  global:
+  - NODE_VERSION_TO_DEPLOY: '6'
+  - GH_REF: github.com/KamataRyo/leaflet-lesson
+  - secure: "b8k4qCfS78NaGwMeSPpfp2xg4xGgKn1LvRc4WNK4OsNNbYmkK9v1xVj7J6NxO7mKH0XqrDmtWTp6n3FLO1evquFcZbuWLLgljLzwqSOQj+/ttUJkYMGFi0Q8g6RaH3jSm8PUvaJvdbU43QefU8wlxjR/j5XPRIU7b2xX7oMHCUWOTIMUAN5bD40sADdbguod2DZSChkB+1/36dam10/3qbdUwZ/p2XaQKJ1d2JIwNk5jwTW7amQDbnWDEI3+Nkgl1rHaPJgKVAmO3hzLnavpvIiCKXWIoWwn4CflzGVDxGMC1ZVGQP0D7VowtQSPTYPqG0CYZCkzdVONCo38R9+YGLxcEc9iaM3N0T9Lc3QpQKXmtkeN4bvDnxJX7FFKImwkWgVuOUD8zHNamBF5BClKXvm4EzEGJXbfc1Cg7YngIbce+bvsUOCZ8KmzKlfL8GMSDKnQYoN3CVriOsh8OqKeOiNzvtdA9NIDlWEeOGMlzO12EEr3UZ5erNnuX3zDrQyYAbix9VjtDT8ucdTYtudMkOrc3BczPl1gfS04ZNt3vGhWSdxuQM5kEIQ76OmEAeyeXKRbpVT2jpypBCFnYkEM+V9ajcTElGCbLx6UjU7WT18ne/cNsW8jHkO1ntJhYeBx4uww3CU2DMxKBhTSJqjqE7mK2X1afVJbzhj3DGL5QDA="

@@ -1,5 +1,7 @@
 # Leaflet Lesson
 
+[![Build Status](https://travis-ci.org/KamataRyo/leaflet-lesson.svg?branch=master)](https://travis-ci.org/KamataRyo/leaflet-lesson)
+
 This is my lesson with Leaflet to build a webmap application.
 
 ## Development

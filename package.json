@@ -7,7 +7,7 @@
     "build": "gulp build",
     "dev": "gulp watch",
     "start": "http-server -o -c-1 ./index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ls ./app.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,6 @@
     "mapbox.js": "^2.4.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-register": "^6.16.3",

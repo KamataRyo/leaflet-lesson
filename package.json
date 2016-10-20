@@ -7,6 +7,7 @@
     "build": "gulp build",
     "dev": "gulp watch",
     "start": "http-server -o -c-1 ./index.html",
+    "lint": "eslint .",
     "test": "ls ./app.js"
   },
   "author": "",

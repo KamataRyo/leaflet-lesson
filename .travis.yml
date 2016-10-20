@@ -8,6 +8,7 @@ branches:
   - master
 before_script:
 - npm install
+- npm run lint
 - npm run build
 after_success:
 - rm .gitignore

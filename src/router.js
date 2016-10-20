@@ -8,27 +8,28 @@ import url from 'url'
  * @return {null}
  */
 export default (args, callback) => {
+
   // Only work with pushState
   if (!window.history || !window.history.pushState) { return }
 
   // Parse URL and get query
   const {query, pathname} = url.parse(document.URL, true)
 
-  // Tokyo station
+  // Tokyo station as default
   const defaultLocation = {
-    lat: 35.681297,
-    lng: 139.766247,
-    zoom: 10
+    zoom: 10,
+    lat:  35.681297,
+    lng:  139.766247
   }
 
   // xyz in arguments > xyz in URL > default xyz
+  const zoom = args.zoom || query.zoom || defaultLocation.zoom
   const lat  = args.lat  || query.lat  || defaultLocation.lat
   const lng  = args.lng  || query.lng  || defaultLocation.lng
-  const zoom = args.zoom || query.zoom || defaultLocation.zoom
 
   // Set URL
-  window.history.pushState(null, null, `${pathname}?lat=${lat}&lng=${lng}&zoom=${zoom}`)
+  window.history.pushState(null, null, `${pathname}?zoom=${zoom}&lat=${lat}&lng=${lng}`)
 
   // callback
-  if (typeof callback == 'function') { callback({lat, lng, zoom}) }
+  if (typeof callback == 'function') { callback({zoom, lat, lng}) }
 }

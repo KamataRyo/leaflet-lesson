@@ -2,7 +2,7 @@
 import Leaflet from 'mapbox.js'
 import Router  from './router.js'
 import load    from './loader.js'
-const ENDPOINT = 'https://raw.githubusercontent.com/KamataRyo/leaflet-lesson-datastore/master/data/data.json'
+const ENDPOINT = 'https://kamataryo.github.io/leaflet-lesson-datastore/dest/list.json'
 const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnRuNHR1b3oifQ.HH5I3qlw_togDES3IDFOug';
 
 /**

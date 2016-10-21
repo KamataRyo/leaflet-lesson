@@ -1,6 +1,6 @@
 'use strict'
 import Leaflet from 'mapbox.js'
-import route   from './router.js'
+import Router  from './router.js'
 import load    from './loader.js'
 const ENDPOINT = 'https://raw.githubusercontent.com/KamataRyo/leaflet-lesson-datastore/master/data/data.json'
 const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnRuNHR1b3oifQ.HH5I3qlw_togDES3IDFOug';
@@ -11,11 +11,12 @@ const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnR
 (() => {
   // set up AccessToken
   Leaflet.mapbox.accessToken = ACCES_STOKEN
+
   // Load map
   const map = Leaflet.mapbox.map('map', 'mapbox.streets').setView([0, 0], 1)
 
   // Initial routing with given URL
-  route({}, ({zoom, lat, lng}) => {
+  Router.route({}, ({zoom, lat, lng}) => {
     map
       .setZoom(zoom)
       .panTo([lat, lng], true)
@@ -52,7 +53,7 @@ const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnR
   map.on('zoomend moveend', (e) => {
     const zoom       = e.target.getZoom()
     const {lat, lng} = e.target.getCenter()
-    route({zoom, lat, lng})
+    Router.route({zoom, lat, lng})
   })
 
 })()

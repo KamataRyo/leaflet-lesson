@@ -1,7 +1,5 @@
 'use strict'
-import L from 'mapbox.js'
 
-export default (e) => {
-  const map = e.target
-  // do anything with `L` and `map`!
+export default (map, L) => {
+  // do anything with `L`(Leaflet object) and `map`!
 }

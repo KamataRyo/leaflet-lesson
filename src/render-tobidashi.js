@@ -1,8 +1,7 @@
 'use strict'
-import L    from 'mapbox.js'
 import load from './loader.js'
 
-export default (e) => {
+export default (map, L) => {
   const ENDPOINT = 'https://kamataryo.github.io/leaflet-lesson-datastore/dest/list.json'
 
   // load Data
@@ -18,7 +17,7 @@ export default (e) => {
       // set markers up
       L
         .marker([lat, lng], {title})
-        .addTo(e.target)
+        .addTo(map)
         .bindPopup(`
           <div class="popup">
             <h1>${title || 'NO TITLE'}</h1>

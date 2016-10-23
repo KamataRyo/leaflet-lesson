@@ -28,6 +28,6 @@ const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnR
     Router.route({zoom, lat, lng})
   })
 
-  map.on('ready', render)
+  map.on('ready', (e) => { render(e.target, L) })
 
 })()

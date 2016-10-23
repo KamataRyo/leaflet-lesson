@@ -5,20 +5,20 @@ import browserify from 'browserify'
 import babelify   from 'babelify'
 import source     from 'vinyl-source-stream'
 import fs         from 'fs'
-import conf       from './src/pages.json'
 
 // duplicate src and generate page
 gulp.task('pagenate', () => {
   fs.readdir('./src/', (err, files) => {
+    const meta = {}
+    var counter = 0
     files.forEach((file) => {
       const matched = file.match(/^render\-(.*)\.js$/i)
       if (matched) {
         // duplicate html
-        const template = conf[matched[1]] ? conf[matched[1]] : {title: 'New', description: 'A new map.'}
-        template.title = template.title ? template.title : 'New'
-        template.description = template.description ? template.description : 'A new map.'
+        const {title, description} = require(`./src/${matched[0]}`).default
+        meta[matched[1]] = {title, description}
         gulp.src('./src/page.html.ejs')
-          .pipe(ejs(template))
+          .pipe(ejs({title, description}))
           .pipe(rename((path) => {
             path.basename = 'index'
             path.extname = '.html'
@@ -34,6 +34,13 @@ gulp.task('pagenate', () => {
             path.basename = 'render'
           }))
           .pipe(gulp.dest(`./dest/${matched[1]}`))
+      }
+      counter += 1
+      if (counter === files.length) {
+
+        const ws = fs.createWriteStream('./.sitemeta.json')
+        ws.write(JSON.stringify(meta))
+        ws.end()
       }
     })
   })
@@ -57,10 +64,11 @@ gulp.task('browserify', () => {
 // clean up and generate index
 gulp.task('afterAll', () => {
   fs.readdir('./dest/', (err, projects) => {
+    const meta = require('./.sitemeta.json')
 
     // generate each index page
     gulp.src('src/index.html.ejs')
-      .pipe(ejs({projects, conf}))
+      .pipe(ejs({meta}))
       .pipe(rename((path) => {
         path.basename = 'index'
         path.extname = '.html'
@@ -68,6 +76,7 @@ gulp.task('afterAll', () => {
       .pipe(gulp.dest('./dest/'))
 
     // delete unnecessary files
+    fs.unlink('./.sitemeta.json')
     projects.forEach((folder) => {
       fs.readdir(`./dest/${folder}/`, (err, files) => {
         files.forEach((file) => {

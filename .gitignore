@@ -7,3 +7,6 @@ app.js
 
 # build directory
 dest/
+
+# temp file for page generation
+.sitemeta.json

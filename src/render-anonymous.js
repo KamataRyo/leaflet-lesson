@@ -1,5 +1,9 @@
 'use strict'
 
-export default (map, L) => {
-  // do anything with `L`(Leaflet object) and `map`!
+export default {
+  title: '新しいマップ',
+  description: '新規のマップです',
+  render: (map, L) => {
+    // do anything with `L`(Leaflet object) and `map`!
+  }
 }

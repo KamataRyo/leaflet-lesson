@@ -22,24 +22,14 @@
 </head>
 <body class="body">
   <header>
-    <h1 class="title">マップ(<%= projects.length %>個のプロジェクト)</h1>
+    <h1 class="title">マップ(<%= meta.length %>個のプロジェクト)</h1>
   </header>
   <div class="content">
     <ul>
-      <%
-        var title, description
-        projects.forEach((project) => {
-          if (conf[project]) {
-            title = conf[project].title ? conf[project].title  : 'NEW MAP'
-            description = conf[project].title ? conf[project].title  : 'A new map page.'
-        } else {
-            title = 'NEW MAP'
-            description = 'A new map page.'
-        }
-      %>
+      <% Object.keys(meta).forEach((key) => {%>
         <li class="item">
-          <span><a class="link" href="./<%= project %>"><%= title %></a></span>
-          <span class="description"><%- description %></span>
+          <span><a class="link" href="./<%= key %>"><%= meta[key].title %></a></span>
+          <span class="description"><%- meta[key].description %></span>
         </li>
       <% }) %>
     </ul>

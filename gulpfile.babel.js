@@ -21,12 +21,14 @@ gulp.task('pagenate', () => {
             path.extname = '.html'
           }))
           .pipe(gulp.dest(`./dest/${matched[1]}`))
-        // duplicate js
-        gulp.src('./src/*.js')
+        // duplicate libraries
+        gulp.src('./lib/*.js')
+          .pipe(gulp.dest(`./dest/${matched[1]}`))
+
+        // duplicate rendering processes
+        gulp.src(`./src/${matched[0]}`)
           .pipe(rename((path) => {
-            if (`${path.basename}${path.extname}` === matched[0]) {
-              path.basename = 'render'
-            }
+            path.basename = 'render'
           }))
           .pipe(gulp.dest(`./dest/${matched[1]}`))
       }

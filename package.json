@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "rm -r ./dest && gulp pagenate && gulp browserify && gulp afterAll",
     "dev": "gulp watch",
-    "start": "http-server -o -c-1 ./index.html",
     "lint": "eslint .",
-    "test": "ls ./app.js"
+    "test": "ls dest"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +22,8 @@
     "browserify": "^13.1.0",
     "eslint": "^3.8.1",
     "gulp": "^3.9.1",
+    "gulp-ejs": "^2.2.1",
+    "gulp-rename": "^1.2.2",
     "http-server": "^0.9.0",
     "vinyl-source-stream": "^1.1.0"
   }

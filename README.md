@@ -8,27 +8,13 @@ https://kamataryo.github.io/leaflet-lesson/
 
 ## Development
 
+Process below generate new map at "http://host/foo/index.html".
+
 ```
 $ git clone https://github.com/KamataRyo/leaflet-lesson.git
 $ cd leaflet-lesson
 $ npm i
-$ npm run dev
-$ npm start
-```
-
-## NOTE
-
-### Add new Layer to map Object
-```
-// Add WMS Layer(Now trying but not working)
-new L.tileLayer.wms('http://demo.opengeo.org/geoserver/wms', {
-  format: 'image/png',
-  transparent: true,
-  layers: '5'
-}).addTo(map)
-
-// Add some tile Layer
-new L.tileLayer(
-    'http://cyberjapandata.gsi.go.jp/xyz/20160414kumamoto_0420dol02/{z}/{x}/{y}.png'
-).addTo(map)
+$ cp src/render-sample.js src/render-foo.js
+$ vi src/render-foo.js
+$ npm run build
 ```

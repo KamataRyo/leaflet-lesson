@@ -4,3 +4,6 @@ npm-debug.log
 
 # browserified
 app.js
+
+# build directory
+dest/

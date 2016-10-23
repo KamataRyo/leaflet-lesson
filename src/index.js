@@ -1,6 +1,6 @@
 'use strict'
 import L      from 'mapbox.js'
-import render from './render.js'
+import render from './render.js' // ./render.js may not be found, but generate after build process
 import Router from './router.js'
 const ACCES_STOKEN = 'pk.eyJ1Ijoia2FtYXRhcnlvIiwiYSI6ImNpdWZld2JpeDAwYncyeXFwZnRuNHR1b3oifQ.HH5I3qlw_togDES3IDFOug';
 

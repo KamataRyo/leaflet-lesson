@@ -26,10 +26,20 @@
   </header>
   <div class="content">
     <ul>
-      <% projects.forEach((project) => {%>
+      <%
+        var title, description
+        projects.forEach((project) => {
+          if (conf[project]) {
+            title = conf[project].title ? conf[project].title  : 'NEW MAP'
+            description = conf[project].title ? conf[project].title  : 'A new map page.'
+        } else {
+            title = 'NEW MAP'
+            description = 'A new map page.'
+        }
+      %>
         <li class="item">
-          <span><a class="link" href="./<%= project %>"><%= conf[project].title %></a></span>
-          <span class="description"><%- conf[project].description %></span>
+          <span><a class="link" href="./<%= project %>"><%= title %></a></span>
+          <span class="description"><%- description %></span>
         </li>
       <% }) %>
     </ul>

@@ -14,8 +14,11 @@ gulp.task('pagenate', () => {
       const matched = file.match(/^render\-(.*)\.js$/i)
       if (matched) {
         // duplicate html
+        const template = conf[matched[1]] ? conf[matched[1]] : {title: 'New', description: 'A new map.'}
+        template.title = template.title ? template.title : 'New'
+        template.description = template.description ? template.description : 'A new map.'
         gulp.src('./src/page.html.ejs')
-          .pipe(ejs(conf[matched[1]]))
+          .pipe(ejs(template))
           .pipe(rename((path) => {
             path.basename = 'index'
             path.extname = '.html'

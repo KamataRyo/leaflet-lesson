@@ -1,7 +1,7 @@
 {
   "name": "leaflet-lessons",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Build Status](https://travis-ci.org/KamataRyo/leaflet-lesson.svg?branch=master)](https://travis-ci.org/KamataRyo/leaflet-lesson)",
   "main": "index.js",
   "scripts": {
     "clean": "if [ -d ./dest ]; then rm -rf ./dest; fi",
@@ -10,8 +10,8 @@
     "scaffold": "bash ./bin/scaffold.sh",
     "test": "ls ./dest/index.html"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "kamataryo",
+  "license": "MIT",
   "dependencies": {
     "mapbox.js": "^2.4.0"
   },
@@ -26,5 +26,18 @@
     "gulp-ejs": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamataRyo/leaflet-lesson.git"
+  },
+  "keywords": [
+    "Leaflet",
+    "map",
+    "generator"
+  ],
+  "bugs": {
+    "url": "https://github.com/KamataRyo/leaflet-lesson/issues"
+  },
+  "homepage": "https://github.com/KamataRyo/leaflet-lesson#readme"
 }

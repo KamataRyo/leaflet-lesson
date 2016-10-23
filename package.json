@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -r ./dest && gulp pagenate && gulp browserify && gulp afterAll",
+    "build": "gulp pagenate && gulp browserify && gulp afterAll",
     "dev": "gulp watch",
     "lint": "eslint .",
     "test": "ls dest"

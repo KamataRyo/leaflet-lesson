@@ -13,7 +13,7 @@ before_script:
 after_success:
 - rm .gitignore
 - rm .travis.yml
-- cp -f ./dest/* ./
+- cp -rf ./dest/* ./
 - rmdir ./dest
 - curl https://raw.githubusercontent.com/KamataRyo/travis-sctipts-collection/master/deploy-gh-pages.sh | bash
 env:

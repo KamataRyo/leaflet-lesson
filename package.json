@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp pagenate && gulp browserify && gulp afterAll",
+    "clean": "if [ -d ./dest ]; then rm -r ./dest/*; fi",
+    "build": "npm run clean && gulp pagenate && gulp browserify && gulp afterAll",
     "dev": "gulp watch",
     "lint": "eslint .",
     "test": "ls dest"

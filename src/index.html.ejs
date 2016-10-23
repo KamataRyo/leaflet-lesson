@@ -4,48 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><%= title %></title>
-  <link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
+  <title>Leaflet Maps</title>
   <style media="screen">
-    html, body {
-      height: 100%;
-      padding: 0;
-      margin: 0;
-    }
-    .header {
-      position: absolute;
-      top: 10px;
-      left: 60px;
-      z-index: 1000;
-      opacity: .7;
-    }
-    .title {
-      margin: 0;
-      font-weight: 100;
-      font-family: sans-serif;
-      font-size: 18px;
-      transition: .2s;
-    }
-    .main {
-      height: 100%;
-    }
-    .description {
-      margin: 0;
-      font-weight: 100;
-      font-family: sans-serif;
+    .item {
+      font-size: 20px;
     }
     .link {
-      text-decoration: none;
       color: darkred;
+    }
+    .description {
+      font-size: 18px;
+    }
+    .description:before {
+      content:" | ";
     }
   </style>
 </head>
-<body>
-  <header class="header">
-    <h1 class="title"><%= title %></h1>
-    <p class="description"><%- description %></p>
+<body class="body">
+  <header>
+    <h1 class="title">マップ(<%= projects.length %>個のプロジェクト)</h1>
   </header>
-  <main id="map" class="main"></main>
-  <script src="./app.js"></script>
+  <div class="content">
+    <ul>
+      <% projects.forEach((project) => {%>
+        <li class="item">
+          <span><a class="link" href="./<%= project %>"><%= conf[project].title %></a></span>
+          <span class="description"><%- conf[project].description %></span>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 </body>
 </html>

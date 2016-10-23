@@ -5,14 +5,14 @@ import browserify from 'browserify'
 import babelify   from 'babelify'
 import source     from 'vinyl-source-stream'
 import fs         from 'fs'
-import conf from './src/pages.json'
+import conf       from './src/pages.json'
 
 // duplicate src and generate page
 gulp.task('pagenate', () => {
   fs.readdir('./src/', (err, files) => {
     files.forEach((file) => {
       const matched = file.match(/^render\-(.*)\.js$/i)
-      if (matched && matched[1] !== 'sample') {
+      if (matched) {
         // duplicate html
         gulp.src('./src/page.html.ejs')
           .pipe(ejs(conf[matched[1]]))
@@ -53,6 +53,7 @@ gulp.task('browserify', () => {
 gulp.task('afterAll', () => {
   fs.readdir('./dest/', (err, projects) => {
 
+    // generate each index page
     gulp.src('src/index.html.ejs')
       .pipe(ejs({projects, conf}))
       .pipe(rename((path) => {
@@ -61,6 +62,7 @@ gulp.task('afterAll', () => {
       }))
       .pipe(gulp.dest('./dest/'))
 
+    // delete unnecessary files
     projects.forEach((folder) => {
       fs.readdir(`./dest/${folder}/`, (err, files) => {
         files.forEach((file) => {

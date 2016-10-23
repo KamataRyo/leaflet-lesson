@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "if [ -d ./dest ]; then rm -r ./dest/*; fi",
+    "clean": "if [ -d ./dest ]; then rm -rf ./dest; fi",
     "build": "npm run clean && gulp pagenate && gulp browserify && gulp afterAll",
-    "dev": "gulp watch",
     "lint": "eslint .",
-    "test": "ls dest"
+    "start": "http-server -o ./dest",
+    "test": "ls dest/index.html"
   },
   "author": "",
   "license": "ISC",

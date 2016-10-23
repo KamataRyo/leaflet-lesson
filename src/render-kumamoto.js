@@ -5,7 +5,6 @@ export default (e) => {
   const map = e.target
 
   // Add some tile Layer
-  new L.tileLayer(
-      'http://cyberjapandata.gsi.go.jp/xyz/20160414kumamoto_0420dol02/{z}/{x}/{y}.png'
-  ).addTo(map)
+  const format = 'http://cyberjapandata.gsi.go.jp/xyz/20160414kumamoto_0420dol02/{z}/{x}/{y}.png'
+  new L.tileLayer(format).addTo(map)
 }

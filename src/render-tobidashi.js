@@ -5,11 +5,11 @@ import load from './loader.js'
 export default (e) => {
   const ENDPOINT = 'https://kamataryo.github.io/leaflet-lesson-datastore/dest/list.json'
 
-  // Load Data
+  // load Data
   load(ENDPOINT, (data) => {
 
     data.forEach(({lat, lng, title, description, imageURL}) => {
-      // Skip ancomplete data
+      // skip ancomplete data
       if (!lat || !lng || !imageURL) {
         console.log('No geolocation or imageURL')
         return

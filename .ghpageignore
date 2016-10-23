@@ -10,3 +10,4 @@ src/
 .travis.yml
 gulpfile.babel.js
 package.json
+render-sample.js

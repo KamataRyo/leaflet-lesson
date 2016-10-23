@@ -8,13 +8,14 @@ https://kamataryo.github.io/leaflet-lesson/
 
 ## Development
 
-Process below generate new map at "http://host/foo/index.html".
+Process below generate new map at "http://host/dest/foo/index.html".
 
 ```
 $ git clone https://github.com/KamataRyo/leaflet-lesson.git
 $ cd leaflet-lesson
-$ npm i
-$ cp ./render-sample.js ./src/render-name.js
-$ vi ./src/render-name.js
+$ npm install
+$ cp -i ./render-sample.js ./src/render-foo.js # foo is new map project name
+$ vi ./src/render-foo.js
+$ vi ./src/pages.json # edit meta information such as title
 $ npm run build
 ```

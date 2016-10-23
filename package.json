@@ -7,8 +7,8 @@
     "clean": "if [ -d ./dest ]; then rm -rf ./dest; fi",
     "build": "npm run clean && gulp pagenate && gulp browserify && gulp afterAll",
     "lint": "eslint .",
-    "start": "http-server -o ./dest",
-    "test": "ls dest/index.html"
+    "scaffold": "bash ./bin/scaffold.sh",
+    "test": "ls ./dest/index.html"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +25,6 @@
     "gulp": "^3.9.1",
     "gulp-ejs": "^2.2.1",
     "gulp-rename": "^1.2.2",
-    "http-server": "^0.9.0",
     "vinyl-source-stream": "^1.1.0"
   }
 }

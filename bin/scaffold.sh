@@ -18,3 +18,5 @@ cp -i ./render-sample.js ./src/render-$SLUG.js
 cat ./src/render-$SLUG.js | sed -e "s/{{title}}/$TITLE/g" | sed -e "s/{{description}}/$DESCRIPTION/g" > ./src/render-$SLUG.js
 
 echo "\`./src/render-$SLUG.js\` has been generated."
+echo "Run \`npm run build\` to generate new page."
+echo "`$TITLE` will be accesible at '/dest/$SLUG/index.html'."

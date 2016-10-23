@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * AJAX load from given URL
+ * AJAX load from given URL. callback will be done with JSON parsed.
  * @param  {[String]}   url    [description]
  * @param  {Function} callback [description]
  */

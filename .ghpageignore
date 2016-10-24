@@ -1,6 +1,7 @@
 .git/
 node_modules/
 bin/
+lib/
 src/
 .babelrc
 .editorconfig

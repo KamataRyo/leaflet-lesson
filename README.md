@@ -7,7 +7,7 @@ The maps are published on [gh-pages](https://kamataryo.github.io/leaflet-lesson/
 
 ## Development
 
-Commands below generates new map under new directory.
+Commands below generate a new map under new directory.
 
 ```
 $ git clone https://github.com/KamataRyo/leaflet-lesson.git && cd leaflet-lesson

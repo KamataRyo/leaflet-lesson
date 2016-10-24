@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/KamataRyo/leaflet-lesson.svg?branch=master)](https://travis-ci.org/KamataRyo/leaflet-lesson)
 
 This is a web map application generator with [Leaflet](http://leafletjs.com/).
-The maps is published on [gh-pages](https://kamataryo.github.io/leaflet-lesson/).
+The maps are published on [gh-pages](https://kamataryo.github.io/leaflet-lesson/).
 
 ## Development
 

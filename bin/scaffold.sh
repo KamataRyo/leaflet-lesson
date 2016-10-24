@@ -19,4 +19,4 @@ cat ./src/render-$SLUG.js | sed -e "s/{{title}}/$TITLE/g" | sed -e "s/{{descript
 
 echo "\`./src/render-$SLUG.js\` has been generated."
 echo "Run \`npm run build\` to generate new page."
-echo "`$TITLE` will be accesible at '/dest/$SLUG/index.html'."
+echo "\`$TITLE\` will be accesible at '/dest/$SLUG/index.html'."

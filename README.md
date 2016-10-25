@@ -12,6 +12,6 @@ Commands below generate a new map under new directory.
 ```
 $ git clone https://github.com/KamataRyo/leaflet-lesson.git && cd leaflet-lesson
 $ npm install
-$ npm run scaffold
+$ npm run scaffold "project-slug"
 $ npm run build
 ```

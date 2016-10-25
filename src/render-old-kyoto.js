@@ -7,9 +7,7 @@ export default {
 
   render: (map, L) => {
 
-    const ENDPOINT1 = 'http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/meisai_sougou/{z}/{x}/{y}.png'
-    const ENDPOINT2 = 'http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/meisai_hasegawa/{z}/{x}/{y}.png'
-    L.tileLayer(ENDPOINT1, {tms: true}).addTo(map)
-    L.tileLayer(ENDPOINT2, {tms: true}).addTo(map)
+    const ENDPOINT = 'http://www.arc.ritsumei.ac.jp/archive01/theater/image/PB/geo/maps/meisai_sougou/{z}/{x}/{y}.png'
+    L.tileLayer(ENDPOINT, {tms: true}).addTo(map)
   }
 }

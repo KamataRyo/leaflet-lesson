@@ -10,7 +10,7 @@ export default {
   `,
 
   render: (map, L) => {
-    const ENDPOINT = 'http://hhypermap.biwako.io/{z}/{x}/{y}.png'
+    const ENDPOINT = 'http://tiles.biwako.io/nz/{z}/{x}/{y}.png'
     L.tileLayer(ENDPOINT, {tms: true}).addTo(map)
   }
 }

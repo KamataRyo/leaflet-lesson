@@ -4,6 +4,8 @@ import rename     from 'gulp-rename'
 import browserify from 'browserify'
 import babelify   from 'babelify'
 import source     from 'vinyl-source-stream'
+import buffer     from 'vinyl-buffer'
+import uglify     from 'gulp-uglify'
 import fs         from 'fs'
 
 // duplicate src and generate page
@@ -53,9 +55,11 @@ gulp.task('browserify', () => {
       browserify({
         entries: [`./dest/${folder}/`]
       })
-        .transform(babelify)
+        .transform([babelify])
         .bundle()
         .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(gulp.dest(`./dest/${folder}/`))
     })
   })

@@ -19,6 +19,13 @@
       z-index: 1000;
       opacity: .7;
     }
+    .footer {
+        position: absolute;
+        bottom: 5px;
+        left: 70px;
+        z-index: 1000;
+        opacity: .7;
+    }
     .title {
       margin: 0;
       font-weight: 100;
@@ -34,6 +41,13 @@
       font-weight: 100;
       font-family: sans-serif;
     }
+    .latlng-head {
+      font-weight: bold;
+    }
+    .latlng-head, .latlng-value {
+      display: inline;
+      margin: auto;
+    }
     .link {
       text-decoration: none;
       color: darkred;
@@ -47,5 +61,8 @@
   </header>
   <main id="map" class="main"></main>
   <script src="./app.js"></script>
+  <footer class="footer">
+      <p id="latlng" class="latlng"></p>
+  </footer>
 </body>
 </html>

@@ -1,6 +1,7 @@
 'use strict'
 
 export default {
+
   title: '京都市明細図',
 
   description: 'old central KYOTO map.',

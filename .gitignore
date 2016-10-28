@@ -2,11 +2,8 @@ node_modules/
 
 npm-debug.log
 
-# browserified
-app.js
-
 # build directory
 dest/
 
-# temp file for page generation
-.sitemeta.json
+# check if gulp should run or not
+.modified.json

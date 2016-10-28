@@ -1,25 +1,32 @@
 'use strict'
 
-const LoadJSON = (url, callback) => {
-  const request = new XMLHttpRequest()
-  request.open('get', url, true)
-  request.onload = () => {
-    if (request.readyState === 4) {
-      if (request.status === 200) {
-        if (typeof callback === 'function') {
-          callback(JSON.parse(request.response))
-        }
-      } else {
-        console.log(`Request failed with status ${request.status}.`)
-      }
-    } else {
-      console.log(`Request failed with readyState ${request.readyState}.`)
-    }
-  }
-  request.send(null)
-}
+const title       = '飛び出し坊やマップ'
+
+const description = 'Hosted on <a class="link" href="https://github.com/KamataRyo/leaflet-lesson">Github</a>.'
+
+const template    = './src/page.html.ejs'
 
 const render = (map, L) => {
+
+  const LoadJSON = (url, callback) => {
+    const request = new XMLHttpRequest()
+    request.open('get', url, true)
+    request.onload = () => {
+      if (request.readyState === 4) {
+        if (request.status === 200) {
+          if (typeof callback === 'function') {
+            callback(JSON.parse(request.response))
+          }
+        } else {
+          console.log(`Request failed with status ${request.status}.`)
+        }
+      } else {
+        console.log(`Request failed with readyState ${request.readyState}.`)
+      }
+    }
+    request.send(null)
+  }
+
   const ENDPOINT = 'https://kamataryo.github.io/leaflet-lesson-datastore/dest/list.json'
 
   // load Data
@@ -48,7 +55,8 @@ const render = (map, L) => {
 }
 
 export default {
-  title: '飛び出し坊やマップ',
-  description: 'Hosted on <a class="link" href="https://github.com/KamataRyo/leaflet-lesson">Github</a>.',
+  title,
+  description,
+  template,
   render
 }

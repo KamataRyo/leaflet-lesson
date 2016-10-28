@@ -6,6 +6,8 @@ export default {
 
   description: '新規のマップです',
 
+  template: './src/page.html.ejs',
+
   render: (map, L) => {
     // do anything with `L`(Leaflet object) and `map`!
   }

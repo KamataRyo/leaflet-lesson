@@ -15,9 +15,9 @@ gulp.task('pagenate', () => {
       const matched = file.match(/^render\-(.*)\.js$/i)
       if (matched) {
         // duplicate html
-        const {title, description} = require(`./src/${matched[0]}`).default
+        const {title, description, template} = require(`./src/${matched[0]}`).default
         meta[matched[1]] = {title, description}
-        gulp.src('./src/page.html.ejs')
+        gulp.src(template)
           .pipe(ejs({title, description}))
           .pipe(rename((path) => {
             path.basename = 'index'
@@ -63,8 +63,10 @@ gulp.task('browserify', () => {
 
 // clean up and generate index
 gulp.task('afterAll', () => {
+
+  const meta = require('./.sitemeta.json')
+
   fs.readdir('./dest/', (err, projects) => {
-    const meta = require('./.sitemeta.json')
 
     // generate each index page
     gulp.src('src/index.html.ejs')
@@ -75,8 +77,10 @@ gulp.task('afterAll', () => {
       }))
       .pipe(gulp.dest('./dest/'))
 
-    // delete unnecessary files
+    // delete unnecessary meta file
     fs.unlink('./.sitemeta.json')
+
+    // delete unnecessary src files
     projects.forEach((folder) => {
       fs.readdir(`./dest/${folder}/`, (err, files) => {
         files.forEach((file) => {

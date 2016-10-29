@@ -4,6 +4,3 @@ npm-debug.log
 
 # build directory
 dest/
-
-# check if gulp should run or not
-.modified.json

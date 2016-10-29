@@ -21,10 +21,11 @@
     }
     .footer {
         position: absolute;
-        bottom: 5px;
-        left: 70px;
+        bottom: 36px;
+        left: 14px;
         z-index: 1000;
         opacity: .7;
+        font-size: .8em;
     }
     .title {
       margin: 0;
@@ -40,6 +41,9 @@
       margin: 0;
       font-weight: 100;
       font-family: sans-serif;
+    }
+    .list-item {
+      margin: auto;
     }
     .latlng-head {
       font-weight: bold;
@@ -60,9 +64,12 @@
     <p class="description"><%- description %></p>
   </header>
   <main id="map" class="main"></main>
-  <script src="./app.js"></script>
   <footer class="footer">
-      <p id="latlng" class="latlng"></p>
+    <dl class="list-item">
+       <dt class="latlng-head">LatLng</dt>
+      <dd id="latlng-value" class="latlng-value">-,-</dd>
+    </dl>
   </footer>
+  <script src="./app.js"></script>
 </body>
 </html>

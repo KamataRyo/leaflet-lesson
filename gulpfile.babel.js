@@ -10,7 +10,7 @@ import buffer     from 'vinyl-buffer'
 import uglify     from 'gulp-uglify'
 import fs         from 'fs'
 
-// prepare for streams
+// prepare metadata
 const prepareSources = () => {
   return new Promise((resolved, rejected) => {
     fs.readdir('./src/', (err, files) => {
@@ -41,7 +41,9 @@ const prepareSources = () => {
   })
 }
 
-// generate main index page from ejs template
+/**
+ * generate main index page from ejs template
+ */
 gulp.task('create-main-index', () => {
   return prepareSources()
     .then(({meta}) => {
@@ -59,14 +61,17 @@ gulp.task('create-main-index', () => {
         }))
         .pipe(gulp.dest('./dest/'))
     })
+    .catch((err) => { console.log(err) })
 })
 
-// create each index page from template
+/**
+ * create each index page from template
+ */
 gulp.task('create-page-index', () => {
   return prepareSources()
     .then(({meta, templates}) => {
-      const generateHTMLs = []
 
+      const generateHTMLs = []
       for(var key of Object.keys(meta)) {
 
         generateHTMLs.push(new Promise((resolved, rejected) => {
@@ -93,11 +98,14 @@ gulp.task('create-page-index', () => {
 
       return Promise.all(generateHTMLs)
     })
+    .catch((err) => { console.log(err) })
 })
 
-// aggregate and prepare for browserify
-// lib/index.js requires ./render.js.
-// This task resolve this dependecy.
+/**
+ * aggregate and prepare for browserify
+ * lib/index.js requires ./render.js.
+ * This task resolve this dependecy.
+ */
 gulp.task('aggregate-js', () => {
 
   return prepareSources()
@@ -118,9 +126,10 @@ gulp.task('aggregate-js', () => {
         })
       ]
 
-      // Copy library to each project directory
-      for(var slug of Object.keys(meta)) {
+      // Copy lib/*.js to each project directory
+      for(var key of Object.keys(meta)) {
         prepareJS.push(new Promise((resolved, rejected) => {
+          const slug = key
           return gulp.src('./lib/*.js')
             .on('error', rejected)
             .pipe(gulp.dest(`./dest/${slug}/`))
@@ -129,16 +138,20 @@ gulp.task('aggregate-js', () => {
       }
 
       return Promise.all(prepareJS)
+        .catch((err) => { console.log(err) })
     })
+    .catch((err) => { console.log(err) })
 })
 
-
+/**
+ * Act browserify
+ */
 gulp.task('browserify',['aggregate-js'], () => {
 
   return prepareSources()
     .then(({meta}) => {
-      const bundles = []
 
+      const bundles = []
       for(var key of Object.keys(meta)) {
         bundles.push(new Promise((resolved, rejected) => {
           const slug = key
@@ -157,28 +170,39 @@ gulp.task('browserify',['aggregate-js'], () => {
       }
 
       return Promise.all(bundles)
+        .catch((err) => { console.log(err) })
     })
+    .catch((err) => { console.log(err) })
 })
 
-// clean up already bundled scripts
+/**
+ * clean up unnecessary files
+ */
 gulp.task('clean', ['browserify'], () => {
 
   return prepareSources()
     .then(({meta}) => {
       Object.keys(meta).forEach((slug) => {
         fs.readdir(`./dest/${slug}/`, (err, files) => {
-          files.forEach((file) => {
-            if (file !== 'app.js' && file !== 'index.html') {
-              fs.unlink(`./dest/${slug}/${file}`)
-            }
-          })
+          if(err) {
+            console.log(err)
+          } else {
+            files.forEach((file) => {
+              if (file !== 'app.js' && file !== 'index.html') {
+                fs.unlink(`./dest/${slug}/${file}`)
+              }
+            })
+          }
         })
       })
     }
   )
+  .catch((err) => { console.log(err) })
 })
 
-
+/**
+ * Entry point
+ */
 gulp.task('build', [
   'create-main-index',
   'create-page-index',

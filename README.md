@@ -12,6 +12,8 @@ Commands below generate a new map under new directory.
 ```
 $ git clone https://github.com/KamataRyo/leaflet-lesson.git && cd leaflet-lesson
 $ npm install
-$ npm run scaffold "project-slug"
+$ npm run scaffold "xyz" # xyz is project slug.
 $ npm run build
 ```
+
+Edit `./src/render-xyz.js` with leaflet to generate a map page at ``./dest/xyz/index/html`

@@ -1,8 +1,8 @@
 {
-  "name": "leaflet-lessons",
+  "name": "leaflet-webmap-generator",
   "version": "1.0.0",
-  "description": "[![Build Status](https://travis-ci.org/KamataRyo/leaflet-lesson.svg?branch=master)](https://travis-ci.org/KamataRyo/leaflet-lesson)",
-  "main": "index.js",
+  "description": "Generate leaflet base single page web application easily.",
+  "main": "gulpfile.babel.js",
   "scripts": {
     "clean": "if [ -d ./dest ]; then rm -rf ./dest; fi",
     "build": "gulp build",

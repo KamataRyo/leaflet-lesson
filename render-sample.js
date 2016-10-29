@@ -7,6 +7,6 @@ export default {
   description: '{{description}}',
 
   render: (map, L) => {
-    // do anything with `L`(Leaflet object) and `map`!
+    // do anything with `L`(Leaflet object) and `map`(Leaflet map object)!
   }
 }

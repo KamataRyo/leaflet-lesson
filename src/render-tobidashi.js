@@ -2,7 +2,7 @@
 
 const title       = '飛び出し坊やマップ'
 
-const description = 'Hosted on <a class="link" href="https://github.com/KamataRyo/leaflet-lesson">Github</a>.'
+const description = 'Hosted on <a class="link" href="https://github.com/KamataRyo/leaflet-lesson">GitHub</a>.'
 
 const template    = './src/page.html.ejs'
 

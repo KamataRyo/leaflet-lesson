@@ -10,7 +10,7 @@ export default {
 
   render: (map, L) => {
 
-    const ENDPOINT = 'http://tiles.biwako.io/kansai-railways/{z}/{x}/{y}.png'
+    const ENDPOINT = 'http://tiles.biwako.io/kansai-railway/{z}/{x}/{y}.png'
     L.tileLayer(ENDPOINT, {tms: true, opacity: .7}).addTo(map)
 
   }
